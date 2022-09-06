@@ -120,7 +120,31 @@ function reverseString(str) {
   // CHALLENGE 5: MAX CHARACTER
   // Return the character that is most common in a string
   // ex. maxCharacter('javascript') == 'a'
-  function maxCharacter(str) {}
+  function maxCharacter(str) {
+    const charMap={}; //object as a map, set it to empty object literal
+    
+    let maxNum = 0;
+    let maxChar = '';
+
+
+    str.split('').forEach(function(char) {
+      if (charMap[char]) {
+        charMap[char]++;
+      } else {
+        charMap[char] = 1;
+      }
+    });
+
+    //this is called for in loop, use in a object
+    for(let char in charMap) {
+      //debugger;  //use nonde inspect index.js for debug mode in the console, enter 'c' for stop at the debugge, 'repl' for look into a variable
+      if (charMap[char] > maxNum) {
+        maxNum = charMap[char];
+        maxChar = char;
+      }
+    }
+    return maxChar;
+  }
   
   
   
@@ -131,6 +155,6 @@ function reverseString(str) {
   
   
   // Call Function
-  const output = capitalizeLetters('I love javascript');
+  const output = maxCharacter('javascripttttttt');
   
   console.log(output);

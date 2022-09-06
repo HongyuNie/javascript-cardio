@@ -5,6 +5,9 @@
 
 //run "node index" on the terminal to see results
 
+
+
+
 // CHALLENGE 1: REVERSE A STRING
 // Return a string in reverse
 // ex. reverseString('hello') === 'olleh'
@@ -58,7 +61,7 @@ function reverseString(str) {
 }
   
   
-  
+
   // CHALLENGE 2: VALIDATE A PALINDROME
   // Return true if palindrome and false if not
   // ex. isPalindrome('racecar') === 'true', isPalindrome('hello') == false
@@ -69,7 +72,7 @@ function reverseString(str) {
   }
   
   
-  
+
   // CHALLENGE 3: REVERSE AN INTEGER
   // Return an integer in reverse
   // ex. reverseInt(521) === 125
@@ -79,7 +82,7 @@ function reverseString(str) {
     return parseInt(revString) * Math.sign(int);//use sing method of math object in js
   }
   
-  
+
   
   // CHALLENGE 4: CAPITALIZE LETTERS
   // Return a string with the first letter of every word capitalized
@@ -92,15 +95,27 @@ function reverseString(str) {
     // return strArr.join(' ');
 
 
-    return str
-        .toLowerCase()
-        .split(' ')
-        .map(function(word){
-            return word[0].toUpperCase() + word.substr(1);
-        })
-        .join(' ');
+    // return str
+    //     .toLowerCase()
+    //     .split(' ')
+    //     .map(function(word){
+    //         return word[0].toUpperCase() + word.substr(1);
+    //     })
+    //     .join(' ');
+
+        //map in es 6:
+        //.map(word => word[0].toUpperCase() + word.substr(1))
+
+
+    //the replace method takes a regular expression which is within a pair of slashes, \b is for word boundary, here is a to z, g is for gloal, without it will only captialize the first letter of firstword, i for case sensitive
+    return str.replace(/\b[a-z]/gi, function(char) {
+      return char.toUpperCase();
+    });
+
+
   }
   
+
   
   // CHALLENGE 5: MAX CHARACTER
   // Return the character that is most common in a string

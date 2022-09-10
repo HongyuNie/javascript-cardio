@@ -8,19 +8,65 @@
 // Return a sum of all parameters entered regardless of the amount of numbers - NO ARRAYS
 // ex. addAll(2,5,6,7) === 20
 
-function addAll() {}
+
+//SOLUTION 1 : ES5 ONLY 
+// function addAll() {
+//     // return arguments; // ES5 argument object
+//     var args = Array.prototype.slice.call(arguments);
+//     var total = 0;
+//     for (let i = 0; i < args.length; i++) {
+//         total += args[i];
+//     }
+//     return total;
+// }
+
+//SOLUTION 2 - ...rest & reduce/forEach
+function addAll(...numbers) {
+    // let total = 0;
+    // numbers.forEach(num => total += num);
+    // return total;
+
+    return numbers.reduce((acc,cur) => acc+cur);
+}
+
+// console.log(addAll(2,5,6,7))
+
 
 // CHALLENGE 2: SUM ALL PRIMES
 // Pass in a number to loop up to and add all of the prime numbers. A prime number is a whole number greater than 1 whose only factors are 1 and itself
 // ex. sumAllPrimes(10) == 17
 
-function sumAllPrimes() {}
+function sumAllPrimes(num) {
+    let total = 0;
+    
+    function checkForPrime (i) {
+        for (let j = 2; j < i; j++) {
+            if (i % j == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    for (let i = 2; i <= num; i++) {
+        if (checkForPrime(i)) {
+            total += i;
+        }
+    }
+    return total;
+}
+
+console.log(sumAllPrimes(67));
 
 // CHALLENGE 3: SEEK & DESTROY
-// Remove from the array whatever is in the following arguments. Return the leftover numbers in an array
+// Remove from the array whatever is in the following arguments. Return the leftover values in an array
 // ex. seekAndDestroy([2, 3, 4, 6, 6, 'hello'], 2, 6) == [3, 4, 'hello']
 
-function seekAndDestroy() {}
+
+//SOLUTION1
+function seekAndDestroy() {
+
+}
 
 // CHALLENGE 4: SORT BY HEIGHT
 // Some people are standing in a row in a park. There are trees between them which cannot be moved. Your task is to rearrange the people by their heights in a non-descending order without moving the trees.
